@@ -1,3 +1,3 @@
-#LIRI bot app 
+# LIRI bot app 
 
-node bot that searches movies, spotify, and bands in town 
+A node.js bot that searches OMDB, Spotify, and Bands in Town.
