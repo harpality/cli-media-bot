@@ -21,18 +21,21 @@ function getFilm() {
     let query = process.argv.slice(3).join(" ");
     console.log(query);
     axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54").then(
-    function(res) {
-        let movie = res.data;
-        // console.log(JSON.stringify(movie, null, 2));
-        console.log(`The movie title is "${movie.Title}".`);
-        console.log(`It came out in the year ${movie.Year}.`);
-        console.log(`IMDB rated it a ${movie.imdbRating}.`)
-        console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
-        console.log(`It was produced in ${movie.Country}.`)
-        console.log(`The plot is "${movie.Plot}"`)
-        console.log(`The main actors are: ${movie.Actors}.`)
-    }
-)
+        function(res) {
+            let movie = res.data;
+            if (movie.Title == undefined) {
+                console.log("There was no movie found in our database.")
+            } else {
+            // console.log(JSON.stringify(movie, null, 2));
+            console.log(`The title is "${movie.Title}".`);
+            console.log(`It came out in the year ${movie.Year}.`);
+            console.log(`IMDB rated it a ${movie.imdbRating}.`)
+            console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
+            console.log(`It was produced in ${movie.Country}.`)
+            console.log(`The plot is "${movie.Plot}"`)
+            console.log(`The main actors are: ${movie.Actors}.`)
+        } 
+    })
 
 }
 
@@ -42,14 +45,24 @@ function getFilm() {
 function getBands() {
 
     let artist = process.argv.slice(3).join(" ");
-    console.log(artist);
+    console.log("\n" + artist);
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
     function(res) {
-        console.log(`${res.data[0].venue.name} in ${res.data[0].venue.city}, ${res.data[0].venue.region}` );
+        // console.log(res.data);
+    if (res.data.length === 0) {
+        console.log("Sorry, no tour dates currently scheduled.")
     }
-)
+        for (let i = 0; i < res.data.length; i++) {    
+             if (res.data[i].venue.region === "") {
+                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+            } else {
+                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+            }
+        }
+    }
+    )
 
-}
+};
 
 if (arg2 === "movie-this") {
     getFilm();
