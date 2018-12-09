@@ -49,7 +49,7 @@ function getBands() {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
         function(res) {
             // console.log(res);
-            if (res.data.length === 0 || res.data.errorMessage || res.data.venue === undefined) {
+            if (res.data.length === 0 || res.data.errorMessage) {
                 console.log("Sorry, no tour dates currently scheduled.")
             } else if (res.data.length > 0) {
                 for (let i = 0; i < res.data.length; i++) {    
