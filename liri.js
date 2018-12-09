@@ -4,9 +4,10 @@ let dotenv = require("dotenv").config();
 let axios = require("axios");
 let moment = require("moment");
 let keys = require("./keys.js");
-let spotify = require("node-spotify-api");
+let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
+var spotify = new Spotify(keys.spotify);
 
 let arg2 = process.argv[2];
 let arg3 = process.argv[3];
@@ -65,8 +66,37 @@ function getBands() {
 
 };
 
+function getSong() {
+    let song = process.argv.slice(3).join(" ");
+
+spotify
+  .search({ type: 'track', query: 'All the Small Things' })
+  .then(function(response) {
+    let spot = response.tracks.items[0];
+    console.log(spot);
+    console.log(spot.artists[0].name);
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+}
+
+// Artist(s)
+
+// The song's name
+
+// A preview link of the song from Spotify
+
+// The album that the song is from
+
+
+
+
+
 if (arg2 === "movie-this") {
     getFilm();
 } else if (arg2 === "concert-this") {
     getBands();
+} else if (arg2 === "spotify-this-song") {
+    getSong();
 }
