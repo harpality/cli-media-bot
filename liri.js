@@ -19,7 +19,7 @@ let arg3 = process.argv[3];
 function getFilm() {
   
     let query = process.argv.slice(3).join(" ");
-
+    console.log(query);
     axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54").then(
     function(res) {
         let movie = res.data;
@@ -36,15 +36,23 @@ function getFilm() {
 
 }
 
-if (arg2 === "movie-this") {
-    getFilm();
+
+// bands in town
+
+function getBands() {
+
+    let artist = process.argv.slice(3).join(" ");
+    console.log(artist);
+    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
+    function(res) {
+        console.log(`${res.data[0].venue.name} in ${res.data[0].venue.city}, ${res.data[0].venue.region}` );
+    }
+)
+
 }
 
-// * Title of the movie.
-// * Year the movie came out.
-// * IMDB Rating of the movie.
-// * Rotten Tomatoes Rating of the movie.
-// * Country where the movie was produced.
-// * Language of the movie.
-// * Plot of the movie.
-// * Actors in the movie.
+if (arg2 === "movie-this") {
+    getFilm();
+} else if (arg2 === "concert-this") {
+    getBands();
+}
