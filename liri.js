@@ -33,6 +33,7 @@ function getFilm() {
             console.log(`IMDB rated it a ${movie.imdbRating}.`)
             console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
             console.log(`Country: ${movie.Country}.`)
+            console.log(`Langauges: ${movie.Language}.`)
             console.log(`The plot is "${movie.Plot}"`)
             console.log(`The main actors are: ${movie.Actors}.`)
         } 
@@ -65,6 +66,9 @@ function getBands() {
         )
 
 };
+
+
+// spotify 
 
 function getSong() {
     let song = process.argv.slice(3).join(" ");
