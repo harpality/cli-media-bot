@@ -47,21 +47,21 @@ function getBands() {
     let artist = process.argv.slice(3).join(" ");
     console.log("\n" + artist + " tour dates:");
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
-    function(res) {
-        // console.log(res.data);
-    if (res.data.length === 0 || !Array.isArray(res.data.length)) {
-        console.log("Sorry, no tour dates currently scheduled.")
-    } else if (res.data.length) {
-        for (let i = 0; i < res.data.length; i++) {    
-             if (res.data[i].venue.region === "") {
-                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
-            } else {
-                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+        function(res) {
+            // console.log(res.data);
+            if (res.data.length === 0 || !Array.isArray(res.data.length)) {
+                console.log("Sorry, no tour dates currently scheduled.")
+            } else if (res.data.length) {
+                for (let i = 0; i < res.data.length; i++) {    
+                    if (res.data[i].venue.region === "") {
+                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                    } else {
+                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                    }
+                }
+                }
             }
-        }
-    }
-    }
-    )
+        )
 
 };
 
