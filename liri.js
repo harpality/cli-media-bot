@@ -18,7 +18,8 @@ let arg3 = process.argv[3];
 
 function getFilm() {
   
-    let query = arg3;
+    let query = process.argv.slice(3).join(" ");
+
     axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54").then(
     function(res) {
         let movie = res.data;
