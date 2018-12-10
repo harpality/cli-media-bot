@@ -71,17 +71,27 @@ function getBands() {
 // spotify 
 
 function getSong() {
-    let song = process.argv.slice(3).join(" ");
+    
+let song = process.argv.slice(3).join(" ");
 
-spotify
-  .search({ type: 'track', query: song })
-  .then(function(response) {
-    let spot = response.tracks.items[0];
-    console.log(`Artist: ${spot.artists[0].name}`);
-    console.log(`Title: ${spot.name}`);
-    console.log(`Soundclip: ${spot.external_urls.spotify}`)
-    console.log(`From the album, "${spot.album.name}."`)
-  })
+    spotify
+    .search({ type: 'track', query: song, limit: 10 })
+    .then(function(response) {
+        
+        for (let i = 0; i < response.tracks.items.length; i++) {
+            let spot = response.tracks.items[i];
+            // console.log(spot);
+                if (spot.name.includes(song) || spot.name.toLowerCase().includes(song)) {
+                    console.log(`\nArtist: ${spot.artists[0].name}`);
+                    console.log(`Title: ${spot.name}`);
+                    console.log(`Soundclip: ${spot.external_urls.spotify}`)
+                    console.log(`From the album, "${spot.album.name}."`)
+                }
+        }  
+
+    })
+
+
   .catch(function(err) {
     console.log(err);
   });
