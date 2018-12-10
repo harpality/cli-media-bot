@@ -77,8 +77,8 @@ spotify
   .search({ type: 'track', query: song })
   .then(function(response) {
     let spot = response.tracks.items[0];
-    console.log(spot.artists[0].name);
-    console.log(spot.name);
+    console.log(`Artist: ${spot.artists[0].name}`);
+    console.log(`Title: ${spot.name}`);
     console.log(`Soundclip: ${spot.external_urls.spotify}`)
     console.log(`From the album, "${spot.album.name}."`)
   })
