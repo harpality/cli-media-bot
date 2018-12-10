@@ -75,7 +75,7 @@ function getSong() {
 let song = process.argv.slice(3).join(" ");
 
     spotify
-    .search({ type: 'track', query: song, limit: 10 })
+    .search({ type: 'track', query: song, limit: 5 })
     .then(function(response) {
         
         for (let i = 0; i < response.tracks.items.length; i++) {
