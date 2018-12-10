@@ -74,11 +74,13 @@ function getSong() {
     let song = process.argv.slice(3).join(" ");
 
 spotify
-  .search({ type: 'track', query: 'All the Small Things' })
+  .search({ type: 'track', query: song })
   .then(function(response) {
     let spot = response.tracks.items[0];
-    console.log(spot);
     console.log(spot.artists[0].name);
+    console.log(spot.name);
+    console.log(`Soundclip: ${spot.external_urls.spotify}`)
+    console.log(`From the album, "${spot.album.name}."`)
   })
   .catch(function(err) {
     console.log(err);
