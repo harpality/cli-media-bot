@@ -97,6 +97,27 @@ let song = process.argv.slice(3).join(" ");
   });
 }
 
+// do what it says 
+
+function doWhat() {
+    let fileName = 'random.txt';
+    fs.readFile(fileName, 'utf8', function(error, data) {
+        if (error) {
+            console.log(`lol u messed up, read the error dawg...${error}`)
+        }  
+   
+        console.log(data);
+
+        if (arg2 === "movie-this") {
+            getFilm();
+        } else if (arg2 === "concert-this") {
+            getBands();
+        } else if (arg2 === "spotify-this-song") {
+            getSong();
+        }
+    })
+};
+
 // initial path
 
 if (arg2 === "movie-this") {
@@ -105,4 +126,6 @@ if (arg2 === "movie-this") {
     getBands();
 } else if (arg2 === "spotify-this-song") {
     getSong();
+} else if (arg2 === "do-what-it-says") {
+    doWhat();
 }
