@@ -113,7 +113,6 @@ function doWhat() {
             spotify
             .search({ type: 'track', query: song, limit: 1 })
             .then(function(response) {
-                console.log(song);
                 for (let i = 0; i < response.tracks.items.length; i++) {
                     let spot = response.tracks.items[i];
                             // console.log(spot);
