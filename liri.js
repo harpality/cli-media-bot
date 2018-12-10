@@ -75,20 +75,17 @@ function getSong() {
 let song = process.argv.slice(3).join(" ");
 
     spotify
-    .search({ type: 'track', query: song, limit: 5 })
+    .search({ type: 'track', query: song, limit: 1 })
     .then(function(response) {
         
         for (let i = 0; i < response.tracks.items.length; i++) {
             let spot = response.tracks.items[i];
-            // console.log(spot);
-                if (spot.name.includes(song) || spot.name.toLowerCase().includes(song)) {
+                    // console.log(spot);
                     console.log(`\nArtist: ${spot.artists[0].name}`);
                     console.log(`Title: ${spot.name}`);
                     console.log(`Soundclip: ${spot.external_urls.spotify}`)
                     console.log(`From the album, "${spot.album.name}."`)
-                }
-        }  
-
+                }  
     })
 
 
@@ -106,16 +103,32 @@ function doWhat() {
             console.log(`lol u messed up, read the error dawg...${error}`)
         }  
    
-        console.log(data);
-
-        if (arg2 === "movie-this") {
+        let fileSplit = (data.split(","));
+        if (fileSplit[0] === "movie-this") {
             getFilm();
-        } else if (arg2 === "concert-this") {
+        } else if (fileSplit[0] === "concert-this") {
             getBands();
-        } else if (arg2 === "spotify-this-song") {
-            getSong();
+        } else if (fileSplit[0] === "spotify-this-song") {            
+            let song = fileSplit[1];
+            spotify
+            .search({ type: 'track', query: song, limit: 1 })
+            .then(function(response) {
+                console.log(song);
+                for (let i = 0; i < response.tracks.items.length; i++) {
+                    let spot = response.tracks.items[i];
+                            // console.log(spot);
+                            console.log(`\nArtist: ${spot.artists[0].name}`);
+                            console.log(`Title: ${spot.name}`);
+                            console.log(`Soundclip: ${spot.external_urls.spotify}`)
+                            console.log(`From the album, "${spot.album.name}."`)
+                        
+                } 
+            })
+            .catch(function(err) {
+            console.log(err);
+            });
         }
-    })
+      })
 };
 
 // initial path
