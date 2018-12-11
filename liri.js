@@ -1,4 +1,4 @@
-//modules
+////// MODULES
 
 let dotenv = require("dotenv").config();
 let axios = require("axios");
@@ -7,12 +7,7 @@ let keys = require("./keys.js");
 let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
-var spotify = new Spotify(keys.spotify);
-
-let arg2 = process.argv[2];
-
-
-//omdb 
+////// OMDB - searching for movie data
 
 function getFilm() {
   
@@ -39,8 +34,7 @@ function getFilm() {
 
 }
 
-
-// bands in town
+////// BANDSINTOWN - searching for concert listings
 
 function getBands() {
 
@@ -67,11 +61,12 @@ function getBands() {
 };
 
 
-// spotify 
+////// SPOTIFY - searching for song details
 
 function getSong() {
 
 let song = process.argv.slice(3).join(" ");
+let spotify = new Spotify(keys.spotify);
 if (song == "") {
     song = "the sign ace of base";
 }
@@ -95,7 +90,7 @@ if (song == "") {
   });
 }
 
-// grab text from random.txt
+////// READ RANDOM.TXT - grabs data written in .txt file 
 
 function doWhat() {
     let fileName = 'random.txt';
@@ -103,7 +98,6 @@ function doWhat() {
         if (error) {
             console.log(`lol u messed up, read the error dawg...${error}`)
         }  
-   
         let fileSplit = (data.split(","));
         if (fileSplit[0] === "movie-this") {
             let query = fileSplit[1];
@@ -143,7 +137,8 @@ function doWhat() {
                         }
                     }
                 )
-        } else if (fileSplit[0] === "spotify-this-song") {            
+        } else if (fileSplit[0] === "spotify-this-song") {   
+            let spotify = new Spotify(keys.spotify);         
             let song = fileSplit[1];
             spotify
             .search({ type: 'track', query: song, limit: 1 })
@@ -165,8 +160,9 @@ function doWhat() {
       })
 };
 
-// switch statement to run app
+////// SWITCH - to activate app
 
+let arg2 = process.argv[2];
 switch (arg2) {
     case "movie-this":
         getFilm();
