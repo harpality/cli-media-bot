@@ -45,7 +45,7 @@ function getFilm() {
 function getBands() {
 
     let artist = process.argv.slice(3).join(" ");
-    console.log("\n" + artist + " tour dates:");
+    console.log("\n" + artist.toUpperCase() + " tour dates:");
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
         function(res) {
             // console.log(res);
