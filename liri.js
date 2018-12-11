@@ -27,7 +27,7 @@ function getFilm() {
                 console.log("There was no movie found in our database.")
             } else {
                 console.log(`\nThe title is "${movie.Title}".`);
-                console.log(`It came out in the year ${movie.Year}.`);
+                console.log(`It came out in ${movie.Year}.`);
                 console.log(`IMDB rated it a ${movie.imdbRating}.`)
                 console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
                 console.log(`Country: ${movie.Country}.`)
