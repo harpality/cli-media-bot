@@ -20,22 +20,20 @@ function getFilm() {
     if (query == "") {
         query = "Mr nobody";
     }
-    // console.log(query);
     axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54").then(
         function(res) {
             let movie = res.data;
             if (movie.Title == undefined) {
                 console.log("There was no movie found in our database.")
             } else {
-            // console.log(JSON.stringify(movie, null, 2));
-            console.log(`The title is "${movie.Title}".`);
-            console.log(`It came out in the year ${movie.Year}.`);
-            console.log(`IMDB rated it a ${movie.imdbRating}.`)
-            console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
-            console.log(`Country: ${movie.Country}.`)
-            console.log(`Langauges: ${movie.Language}.`)
-            console.log(`The plot is "${movie.Plot}"`)
-            console.log(`The main actors are: ${movie.Actors}.`)
+                console.log(`\nThe title is "${movie.Title}".`);
+                console.log(`It came out in the year ${movie.Year}.`);
+                console.log(`IMDB rated it a ${movie.imdbRating}.`)
+                console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
+                console.log(`Country: ${movie.Country}.`)
+                console.log(`Langauges: ${movie.Language}.`)
+                console.log(`The plot is "${movie.Plot}"`)
+                console.log(`The main actors are: ${movie.Actors}.\n`)
         } 
     })
 
@@ -96,7 +94,7 @@ if (song == "") {
   });
 }
 
-// do what it says 
+// grab text from random.txt
 
 function doWhat() {
     let fileName = 'random.txt';
@@ -132,14 +130,19 @@ function doWhat() {
       })
 };
 
-// initial path
+// switch statement to run app
 
-if (arg2 === "movie-this") {
-    getFilm();
-} else if (arg2 === "concert-this") {
-    getBands();
-} else if (arg2 === "spotify-this-song") {
-    getSong();
-} else if (arg2 === "do-what-it-says") {
-    doWhat();
+switch (arg2) {
+    case "movie-this":
+        getFilm();
+         break;
+    case "concert-this":
+        getBands();
+        break;
+    case "spotify-this-song":
+        getSong();
+        break;
+    case "do-what-it-says":
+        doWhat(); 
+        break;
 }
