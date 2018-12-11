@@ -1,4 +1,4 @@
-////// MODULES
+/// MODULES
 
 let dotenv = require("dotenv").config();
 let axios = require("axios");
@@ -7,10 +7,9 @@ let keys = require("./keys.js");
 let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
-////// OMDB - searching for movie data
+/// OMDB - searching for movie data
 
 function getFilm() {
-  
     let query = process.argv.slice(3).join(" ");
     if (query == "") {
         query = "Mr nobody";
@@ -31,13 +30,11 @@ function getFilm() {
                 console.log(`The main actors are: ${movie.Actors}.\n`)
         } 
     })
-
 }
 
-////// BANDSINTOWN - searching for concert listings
+/// BANDSINTOWN - searching for concert listings
 
 function getBands() {
-
     let artist = process.argv.slice(3).join(" ");
     console.log("\n" + artist.toUpperCase() + " tour dates:");
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
@@ -53,44 +50,38 @@ function getBands() {
                         console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
                     }
                 }
-                console.log("\n");
+                        console.log("\n");
                 }
             }
         )
-
 };
 
 
-////// SPOTIFY - searching for song details
+/// SPOTIFY - searching for song details
 
 function getSong() {
-
-let song = process.argv.slice(3).join(" ");
-let spotify = new Spotify(keys.spotify);
-if (song == "") {
-    song = "the sign ace of base";
-}
-    spotify
-    .search({ type: 'track', query: song, limit: 1 })
-    .then(function(response) {
-        
-        for (let i = 0; i < response.tracks.items.length; i++) {
-            let spot = response.tracks.items[i];
-                    // console.log(spot);
-                    console.log(`\nArtist: ${spot.artists[0].name}`);
-                    console.log(`Title: ${spot.name}`);
-                    console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                    console.log(`From the album, "${spot.album.name}."\n`)
-                }  
-    })
-
-
-  .catch(function(err) {
-    console.log(err);
-  });
+    let song = process.argv.slice(3).join(" ");
+    let spotify = new Spotify(keys.spotify);
+    if (song == "") {
+        song = "the sign ace of base";
+    }
+        spotify
+        .search({ type: 'track', query: song, limit: 1 })
+        .then(function(response) {         
+            for (let i = 0; i < response.tracks.items.length; i++) {
+                let spot = response.tracks.items[i];
+                        console.log(`\nArtist: ${spot.artists[0].name}`);
+                        console.log(`Title: ${spot.name}`);
+                        console.log(`Soundclip: ${spot.external_urls.spotify}`)
+                        console.log(`From the album, "${spot.album.name}."\n`)
+                    }  
+        })
+        .catch(function(err) {
+            console.log(err);
+    });
 }
 
-////// READ RANDOM.TXT - grabs data written in .txt file 
+/// READ RANDOM.TXT - grabs data written in .txt file 
 
 function doWhat() {
     let fileName = 'random.txt';
@@ -122,7 +113,6 @@ function doWhat() {
             console.log("\n" + artist.toUpperCase() + " tour dates:");
             axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
                 function(res) {
-                    // console.log(res);
                     if (res.data.length === 0 || res.data.errorMessage || res.data[0].venue === undefined) {
                         console.log("Sorry, no tour dates currently scheduled.")
                     } else if (res.data.length > 0) {
@@ -133,7 +123,7 @@ function doWhat() {
                                 console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
                             }
                         }
-                        console.log("\n");
+                                console.log("\n");
                         }
                     }
                 )
@@ -145,12 +135,10 @@ function doWhat() {
             .then(function(response) {
                 for (let i = 0; i < response.tracks.items.length; i++) {
                     let spot = response.tracks.items[i];
-                            // console.log(spot);
                             console.log(`\nArtist: ${spot.artists[0].name}`);
                             console.log(`Title: ${spot.name}`);
                             console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                            console.log(`From the album, "${spot.album.name}."\n`)
-                        
+                            console.log(`From the album, "${spot.album.name}."\n`)   
                 } 
             })
             .catch(function(err) {
@@ -160,7 +148,7 @@ function doWhat() {
       })
 };
 
-////// SWITCH - to activate app
+/// SWITCH - to activate app
 
 let arg2 = process.argv[2];
 switch (arg2) {
