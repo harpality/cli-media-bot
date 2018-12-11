@@ -71,9 +71,11 @@ function getBands() {
 // spotify 
 
 function getSong() {
-    
-let song = process.argv.slice(3).join(" ");
 
+let song = process.argv.slice(3).join(" ");
+if (song == "") {
+    song = "the sign ace of base";
+}
     spotify
     .search({ type: 'track', query: song, limit: 1 })
     .then(function(response) {
