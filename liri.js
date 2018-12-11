@@ -145,4 +145,5 @@ switch (arg2) {
     case "do-what-it-says":
         doWhat(); 
         break;
+    default: console.log("\nNo option selected. \nYou must select from 'movie-this', 'concert-this', and 'spotify-this-song'\n")
 }
