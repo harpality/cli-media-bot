@@ -106,9 +106,43 @@ function doWhat() {
    
         let fileSplit = (data.split(","));
         if (fileSplit[0] === "movie-this") {
-            getFilm();
+            let query = fileSplit[1];
+            axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54&plot=full").then(
+            function(res) {
+            let movie = res.data;
+            if (movie.Title == undefined) {
+                console.log("There was no movie found in our database.")
+            } else {
+                console.log(`\nThe title is "${movie.Title}".`);
+                console.log(`It came out in ${movie.Year}.`);
+                console.log(`IMDB rated it a ${movie.imdbRating}.`)
+                console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
+                console.log(`Country: ${movie.Country}.`)
+                console.log(`Langauges: ${movie.Language}.`)
+                console.log(`The plot is "${movie.Plot}"`)
+                console.log(`The main actors are: ${movie.Actors}.\n`)
+        } 
+    })
         } else if (fileSplit[0] === "concert-this") {
-            getBands();
+            let artist = fileSplit[1];
+            console.log("\n" + artist.toUpperCase() + " tour dates:");
+            axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
+                function(res) {
+                    // console.log(res);
+                    if (res.data.length === 0 || res.data.errorMessage || res.data[0].venue === undefined) {
+                        console.log("Sorry, no tour dates currently scheduled.")
+                    } else if (res.data.length > 0) {
+                        for (let i = 0; i < res.data.length; i++) {    
+                            if (res.data[i].venue.region === "") {
+                                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                            } else {
+                                console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                            }
+                        }
+                        console.log("\n");
+                        }
+                    }
+                )
         } else if (fileSplit[0] === "spotify-this-song") {            
             let song = fileSplit[1];
             spotify
