@@ -54,9 +54,9 @@ function getBands() {
             } else if (res.data.length > 0) {
                 for (let i = 0; i < res.data.length; i++) {    
                     if (res.data[i].venue.region === "") {
-                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}\n`);
                     } else {
-                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}`);
+                        console.log(`\n${res.data[i].venue.name} - ${res.data[i].venue.city}, ${res.data[i].venue.region} ${res.data[i].venue.country} - ${moment(res.data[i].datetime).format("MM/DD/YYYY")}\n`);
                     }
                 }
                 }
@@ -84,7 +84,7 @@ if (song == "") {
                     console.log(`\nArtist: ${spot.artists[0].name}`);
                     console.log(`Title: ${spot.name}`);
                     console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                    console.log(`From the album, "${spot.album.name}."`)
+                    console.log(`From the album, "${spot.album.name}."\n`)
                 }  
     })
 
@@ -119,7 +119,7 @@ function doWhat() {
                             console.log(`\nArtist: ${spot.artists[0].name}`);
                             console.log(`Title: ${spot.name}`);
                             console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                            console.log(`From the album, "${spot.album.name}."`)
+                            console.log(`From the album, "${spot.album.name}."\n`)
                         
                 } 
             })
