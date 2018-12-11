@@ -10,17 +10,17 @@ let fs = require('fs');
 var spotify = new Spotify(keys.spotify);
 
 let arg2 = process.argv[2];
-let arg3 = process.argv[3];
 
-
-// console.log(keys.spotify);
 
 //omdb 
 
 function getFilm() {
   
     let query = process.argv.slice(3).join(" ");
-    console.log(query);
+    if (query == "") {
+        query = "Mr nobody";
+    }
+    // console.log(query);
     axios.get("https://www.omdbapi.com/?t="+ query +"&apikey=c4a1de54").then(
         function(res) {
             let movie = res.data;
