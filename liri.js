@@ -22,8 +22,6 @@ function getFilm(query) {
             if (movie.Title == undefined) {
                 console.log("There was no movie found in our database.")
             } else {
-                console.log(movie);
-
                 console.log(`\nThe title is "${movie.Title}".`);
                 console.log(`It came out in ${movie.Year}.`);
                 console.log(`IMDB rated it a ${movie.imdbRating}.`)
