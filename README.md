@@ -3,6 +3,19 @@
 ### Overview 
 LIRI (Language Interpretation and Recognition Interface) is a node.js command line bot that quickly searches OMDB, BandsInTown, and Spotify for movie, concert, and song information.
 
+### Install
+Clone this folder to your hard drive and then run 
+```npm install```.
+
+This will install the following dependencies:
+```dotenv
+   axios
+   moment
+   node-spotify-api
+   fs
+```
+
+
 ### Commands
 * Use the following commands followed by your search query.
 ```
