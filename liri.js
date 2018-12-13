@@ -8,7 +8,8 @@ let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
 
-/** Takes in the users query and logs movie data from the OMDB API
+/** 
+ * Takes in the users query and logs movie data from the OMDB API
  * @param  {string} query is the users search query
  */
 function getFilm(query) {
@@ -33,8 +34,10 @@ function getFilm(query) {
         })
 }
 
-//  BANDSINTOWN - searching for concert listings
-
+/** 
+ * Takes in the users query and logs concert data from the BandsinTown API
+ * @param  {string} artist is the name of the band entered by the user
+ */
 function getBands(artist) {
     console.log("\n" + artist.toUpperCase() + " tour dates:");
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
@@ -57,8 +60,11 @@ function getBands(artist) {
 };
 
 
-//  SPOTIFY - searching for song details
 
+/**  
+ * Takes in the users query and logs song data from Spotify's API
+ * @param  {string} song is name of the song entered by the user
+ */
 function getSong(song) {
     let spotify = new Spotify(keys.spotify);
     if (song == "") {
@@ -80,8 +86,9 @@ function getSong(song) {
         });
 }
 
-//  READ RANDOM.TXT - grabs data written in .txt file 
-
+/** 
+ * Reads the random.txt file and then pushes data through the appropriate API
+ */
 function doWhat() {
     let fileName = 'random.txt';
     fs.readFile(fileName, 'utf8', function (error, data) {
@@ -99,8 +106,9 @@ function doWhat() {
     })
 };
 
-//  SWITCH - to activate app
-
+/**
+ * Takes the keyword entered by user and chooses the appropriate function to call
+ */
 let arg2 = process.argv[2];
 let arg3 = process.argv.slice(3).join(" ");
 
@@ -117,5 +125,5 @@ switch (arg2) {
     case "do-what-it-says":
         doWhat();
         break;
-    default: console.log("\nNo option selected. \nYou must select from 'movie-this', 'concert-this', or 'spotify-this-song'\n")
+    default: console.log(`\nNo option selected. \nYou must select from 'movie-this', 'concert-this', or 'spotify-this-song'\n`)
 }
