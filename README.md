@@ -1,4 +1,4 @@
-# LIRI - a command line bot 😎
+# LIRI - a command line bot 🤖
 
 ### Overview 
 LIRI (Language Interpretation and Recognition Interface) is a node.js command line bot that quickly searches OMDB, BandsInTown, and Spotify for movie, concert, and song information.
@@ -48,7 +48,7 @@ This will install the following dependencies:
 
 ![movie-this-default](images/movie-this-default.png)
 
-#### Do What It Says
+#### 🗒️ Do What It Says 🗒️
 * Returns the text that is located in random.txt. In this case its 
 ```spotify-this-song,"I Want it That Way"```
 
