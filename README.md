@@ -30,3 +30,13 @@ LIRI (Language Interpretation and Recognition Interface) is a node.js command li
 * Returns the following details for the movie entered.
 
 ![movie-this](images/movie-this.png)
+
+* If nothing is entered, it will default to the following.
+
+![movie-this-default](images/movie-this-default.png)
+
+#### Do What It Says
+* Returns the text that is located in random.txt. In this case its 
+```spotify-this-song,"I Want it That Way"```
+
+![do-what-it-says](images/do-what-it-says.png)
