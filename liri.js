@@ -1,4 +1,4 @@
-//  MODULES
+//  Modules
 
 let dotenv = require("dotenv").config();
 let axios = require("axios");
@@ -7,8 +7,10 @@ let keys = require("./keys.js");
 let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
-//  OMDB - searching for movie data
 
+/** Takes in the users query and logs movie data from the OMDB API
+ * @param  {string} query is the users search query
+ */
 function getFilm(query) {
     if (query == "") {
         query = "Mr Nobody";
