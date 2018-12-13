@@ -7,7 +7,6 @@ let keys = require("./keys.js");
 let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
-
 /** 
  * Takes in the users query and logs movie data from the OMDB API
  * @param  {string} query is the users search query
@@ -16,7 +15,7 @@ function getFilm(query) {
     if (query == "") {
         query = "Mr Nobody";
     }
-    axios.get("https://www.omdbapi.com/?t=" + query + "&apikey=c4a1de54&plot=full").then(
+    axios.get("https://www.omdbapi.com/?t=" + query + "&apikey=c4a1de54").then(
         function (res) {
             let movie = res.data;
             if (movie.Title == undefined) {
@@ -25,7 +24,11 @@ function getFilm(query) {
                 console.log(`\nThe title is "${movie.Title}".`);
                 console.log(`It came out in ${movie.Year}.`);
                 console.log(`IMDB rated it a ${movie.imdbRating}.`)
-                console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
+                if (movie.Ratings.length) {
+                    console.log(`No Rotten Tomatoes rating.`)
+                } else {
+                    console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
+                }
                 console.log(`Country: ${movie.Country}.`)
                 console.log(`Langauges: ${movie.Language}.`)
                 console.log(`The plot is "${movie.Plot}"`)
