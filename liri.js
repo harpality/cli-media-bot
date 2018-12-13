@@ -1,4 +1,4 @@
-//  Modules
+//  Dependencies
 
 let dotenv = require("dotenv").config();
 let axios = require("axios");
@@ -61,8 +61,6 @@ function getBands(artist) {
         }
     )
 };
-
-
 
 /**  
  * Takes in the users query and logs song data from Spotify's API
