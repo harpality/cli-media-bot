@@ -22,10 +22,12 @@ function getFilm(query) {
             if (movie.Title == undefined) {
                 console.log("There was no movie found in our database.")
             } else {
+                console.log(movie);
+
                 console.log(`\nThe title is "${movie.Title}".`);
                 console.log(`It came out in ${movie.Year}.`);
                 console.log(`IMDB rated it a ${movie.imdbRating}.`)
-                if (movie.Ratings.length) {
+                if (!movie.Ratings[1]) {
                     console.log(`No Rotten Tomatoes rating.`)
                 } else {
                     console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
