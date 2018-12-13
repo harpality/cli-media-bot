@@ -1,5 +1,6 @@
-//  Dependencies
-
+/**
+ * Dependencies
+ */
 let dotenv = require("dotenv").config();
 let axios = require("axios");
 let moment = require("moment");
