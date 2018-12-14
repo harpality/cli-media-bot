@@ -31,7 +31,7 @@ function getFilm(query) {
                     console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
                 }
                 console.log(`Country: ${movie.Country}.`)
-                console.log(`Langauges: ${movie.Language}.`)
+                console.log(`Languages: ${movie.Language}.`)
                 console.log(`The plot is "${movie.Plot}"`)
                 console.log(`The main actors are: ${movie.Actors}.\n`)
             }
