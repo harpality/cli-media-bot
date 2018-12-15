@@ -25,7 +25,7 @@ This will install the following dependencies:
    node liri do-what-it-says
 ```
 
-#### 🎵 Spotify This Song 🎵
+#### 🎵 Spotify This Song 
 * Returns the following details for a song title entered.
 
 ![spotify-this-song](https://media.giphy.com/media/iOyvyUUv4iswBs0YFo/giphy.gif)
@@ -34,12 +34,12 @@ This will install the following dependencies:
 
 ![spotify-this-song-default](https://media.giphy.com/media/1BfScEKilyculMg9Td/giphy.gif)
 
-#### 🎺 Concert This 🎺
+#### 🎺 Concert This 
 * Returns the upcoming tour dates in a list for the artist entered.
 
 ![concert-this](https://media.giphy.com/media/NVmIVsl6nzAaBecLqY/giphy.gif)
 
-#### 🍿 Movie This 🍿
+#### 🍿 Movie This 
 * Returns the following details for the movie entered.
 
 ![movie-this](https://media.giphy.com/media/7E5hQbLSk3ZcJ0WV6q/giphy.gif)
@@ -48,7 +48,7 @@ This will install the following dependencies:
 
 ![movie-this-default](https://media.giphy.com/media/nbaKTJsh0L5IkQ00tS/giphy.gif)
 
-#### 🗒️ Do What It Says 🗒️
+#### 🗒️ Do What It Says 
 * Returns the text that is located in random.txt. In this case its 
 ```spotify-this-song,"I Want it That Way"```
 
