@@ -28,28 +28,28 @@ This will install the following dependencies:
 #### 🎵 Spotify This Song 🎵
 * Returns the following details for a song title entered.
 
-![spotify-this-song](images/spotify-this-song.png)
+![spotify-this-song](https://media.giphy.com/media/iOyvyUUv4iswBs0YFo/giphy.gif)
 
 * If nothing is entered, it will default to the following.
 
-![spotify-this-song-default](images/spotify-this-song-default.png)
+![spotify-this-song-default](https://media.giphy.com/media/1BfScEKilyculMg9Td/giphy.gif)
 
 #### 🎺 Concert This 🎺
 * Returns the upcoming tour dates in a list for the artist entered.
 
-![concert-this](images/concert-this.png)
+![concert-this](https://media.giphy.com/media/NVmIVsl6nzAaBecLqY/giphy.gif)
 
 #### 🍿 Movie This 🍿
 * Returns the following details for the movie entered.
 
-![movie-this](images/movie-this.png)
+![movie-this](https://media.giphy.com/media/7E5hQbLSk3ZcJ0WV6q/giphy.gif)
 
 * If nothing is entered, it will default to the following.
 
-![movie-this-default](images/movie-this-default.png)
+![movie-this-default](https://media.giphy.com/media/nbaKTJsh0L5IkQ00tS/giphy.gif)
 
 #### 🗒️ Do What It Says 🗒️
 * Returns the text that is located in random.txt. In this case its 
 ```spotify-this-song,"I Want it That Way"```
 
-![do-what-it-says](images/do-what-it-says.png)
+![do-what-it-says](https://media.giphy.com/media/65R0TGG5ORnfxr8Ifx/giphy.gif)
